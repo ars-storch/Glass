@@ -11,7 +11,7 @@ import Firebase
 @main
 struct GlassApp: App {
     
-    @StateObject var viewModel = AuthViewModel()
+    @StateObject var viewModel = AuthFirebase()
     
     init() {
         FirebaseApp.configure()

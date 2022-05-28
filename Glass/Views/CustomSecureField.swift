@@ -10,7 +10,7 @@ import SwiftUI
 struct CustomSecureField: View {
     let imageName: String
     let placeholderText: String
-    @Binding var password:String
+    @Binding var password: String
     var body: some View {
         VStack {
             

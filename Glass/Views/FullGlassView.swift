@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FullGlassView: View {
     
-    @EnvironmentObject var viewModel: AuthViewModel
+    @EnvironmentObject var viewModel: AuthFirebase
     @ObservedObject var feed = Feed()
     @Binding var likesAreAvailable: Bool
     @Binding var commentsAreVisible: Bool
@@ -42,16 +42,11 @@ struct FullGlassView: View {
                         Spacer()
                     }
                     List {
-                        ForEach($feed.bigPosts) { post in
-                            BigPostView(post: post)
+                        ForEach($feed.posts) { post in
+                            PostView(post: post)
                         }
-                        .padding(.top, 20)
-                        .frame(width: 320, height: 400)
-                        
-                        ForEach($feed.smallPosts) { post in
-                            SmallPostView(post: post)
-                        }
-                        .frame(width: 320, height: 250)
+                            .padding(.top, 20)
+                            .frame(width: 320, height: .infinity)
                     }.listStyle(.automatic)
                 }
             }
@@ -64,3 +59,6 @@ struct FeedView_Previews: PreviewProvider {
         FullGlassView(likesAreAvailable: .constant(false), commentsAreVisible: .constant(false))
     }
 }
+
+
+

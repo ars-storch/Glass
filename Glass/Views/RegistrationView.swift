@@ -13,16 +13,19 @@ struct RegistrationView: View {
     @State private var password = ""
     @State private var username = ""
     @State private var fullName = ""
-    @EnvironmentObject var viewModel: AuthViewModel
+    @EnvironmentObject var viewModel: AuthFirebase
     
     var body: some View {
         VStack {
             VStack(alignment: .leading) {
                     HStack { Spacer() }
-                    Text("Get started.")
+                    Text("Your Glass.")
                         .font(.largeTitle)
                         .fontWeight(.semibold)
-                    Text("Created your account.")
+                    Text("Your own rules.")
+                        .font(.largeTitle)
+                        .fontWeight(.semibold)
+                    Text("Create your account.")
                         .font(.largeTitle)
                         .fontWeight(.semibold)
             }
@@ -76,12 +79,16 @@ struct RegistrationView: View {
                 
                 Text("Already have an account?")
                     .foregroundColor(.blue)
-                
+            
                 NavigationLink(destination: LogInView()) {
                     Text("Sign in")
                         .fontWeight(.bold)
                         .foregroundColor(.blue)
                 }
+                
+                Image("GlassFull")
+                    .resizable()
+                    .frame(width: 25, height: 25)
                 
             }
             .padding(.bottom, 30)

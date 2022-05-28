@@ -7,47 +7,19 @@
 
 import SwiftUI
 
+// В NetworkManager должна быть функция, возвращающая [Post]. Здесь мы уже только присваеваем переменной @Published var posts: [Post] = NetworkManager().getPosts. Ближайщая задача - написать эту функцию в NetworkManager.
+
 class Feed: ObservableObject {
     
+    let networkManager = NetworkManager()
+    
     @Published var posts: [Post] = [
-        Post(bigItem: true, socialNetwork: .twitter, text: "This is Elon Musk's first attempt to conquer the world!", likesCount: 4, commentsCount: 1, comments: ["Wow, that's delicious!", "How dare you!"], image: Image("TestPicture")),
-        Post(bigItem: false, socialNetwork: .instagram, text: "Oh my God, Poppy, you've shared with me such a lovely story!", likesCount: 70, commentsCount: 4, comments: ["Yes, it was beautiful!"], image: Image("TestPicture"))
+        Post(text: "This is Elon Musk's first attempt to conquer the world!This is Elon Musk's first attempt to conquer the world!This is Elon Musk's first attempt to conquer the world!This is Elon Musk's first attempt to conquer the world!This is Elon Musk's first attempt to conquer the world!This is Elon Musk's first attempt to conquer the world!This is Elon Musk's first attempt to conquer the world!This is Elon Musk's first attempt to conquer the world!This is Elon Musk's first attempt to conquer the world!This is Elon Musk's first attempt to conquer the world!This is Elon Musk's first attempt to conquer the world!This is Elon Musk's first attempt to conquer the world!This is Elon Musk's first attempt to conquer the world!This is Elon Musk's first attempt to conquer the world!This is Elon Musk's first attempt to conquer the world!This is Elon Musk's first attempt to conquer the world!", likesCount: 4, commentsCount: 1, comments: ["Wow, that's delicious!", "How dare you!"], imageURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/CK_Calvin_Klein_logo.svg/1643px-CK_Calvin_Klein_logo.svg.png", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/CK_Calvin_Klein_logo.svg/1643px-CK_Calvin_Klein_logo.svg.png"),
+        Post(text: "Oh my God, Poppy, you've shared with me such a lovely story!", likesCount: 70, commentsCount: 4, comments: ["Yes, it was beautiful!"], imageURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/CK_Calvin_Klein_logo.svg/1643px-CK_Calvin_Klein_logo.svg.png", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/CK_Calvin_Klein_logo.svg/1643px-CK_Calvin_Klein_logo.svg.png")
     ]
     
-    var smallPosts: [Post] {
-        get {
-            getSmallPosts()
-        }
-        set {
-            getBigPosts()
-        }
-    }
-    var bigPosts: [Post] {
-        get {
-            getBigPosts()
-        }
-        set {
-            getBigPosts()
-        }
+    struct PostForView {
+        
     }
     
-    func getSmallPosts() -> [Post] {
-        var localPosts: [Post] = []
-            for post in posts {
-                if post.bigItem == true {
-                    localPosts.append(post)
-                }
-            }
-        return localPosts
-    }
-    
-    func getBigPosts() -> [Post] {
-        var localPosts: [Post] = []
-            for post in posts {
-                if post.bigItem == false {
-                    localPosts.append(post)
-                }
-            }
-        return localPosts
-    }
 }

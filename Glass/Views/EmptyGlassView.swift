@@ -10,7 +10,7 @@ import SwiftUI
 struct EmptyGlassView: View {
     
     @ObservedObject var feed = Feed() // Это только в контент вью.
-    @EnvironmentObject var viewModel: AuthViewModel
+    @EnvironmentObject var viewModel: AuthFirebase
     @Binding var likesAreAvailable: Bool
     @Binding var commentsAreVisible: Bool
     
@@ -44,7 +44,7 @@ struct EmptyGlassView: View {
                 }
                 List {
                     ForEach($feed.posts) { post in
-                        BigPostView(post: post)
+                        PostView(post: post)
                     }
                     .padding(.top, 20)
                     .frame(width: 320, height: 365)

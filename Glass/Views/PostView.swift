@@ -12,25 +12,31 @@ import SwiftUI
 // 3) A parent position a child in its own coordinsate space.
 // 4) Size of ContentView is the size of the body property.
 
-struct BigPostView: View {
+struct PostView: View {
     @Binding var post: Post
     var body: some View {
         
         VStack{
             HStack{
-                post.image!
-                    .resizable()
+                AsyncImage(url: URL(string: post.imageURL)) { image in
+                    image.resizable()
+                } placeholder: {
+                    Image(systemName: "HERE SHOULD BE LOADING IMAGE")
+                }
                     .frame(width: 30, height: 30)
                     .cornerRadius(30)
                     .padding([.leading], 10)
                 Text("@thisusername")
-                    .font(.bold(Font.caption2)())
+                    .font(.bold(Font.caption)())
                 Spacer()
             }
             ZStack{
                 VStack{
-                    post.image!
-                        .resizable()
+                    AsyncImage(url: URL(string: post.imageURL)) { image in
+                        image.resizable()
+                    } placeholder: {
+                        Image(systemName: "HERE SHOULD BE LOADING IMAGE")
+                    }
                         .frame(height: 150)
                         .cornerRadius(30)
                     ZStack{
@@ -39,9 +45,10 @@ struct BigPostView: View {
                             .foregroundColor(.white)
                             .frame(height: 150)
                         HStack{
-                                Text(post.text)
+                           ExpandableText(post.text, lineLimit: 6)
                                     .font(.bold(Font.title3)())
                             }
+                            
                     }
                     HStack {
                         // Read button
@@ -72,8 +79,11 @@ struct BigPostView: View {
                             Text(String(post.commentsCount))
                         }
                         Spacer()
-                        post.logo?
-                            .resizable()
+                        AsyncImage(url: URL(string: post.logo!)) { image in
+                            image.resizable()
+                        } placeholder: {
+                            Image(systemName: "HERE SHOULD BE LOADING IMAGE")
+                        }
                             .frame(width: 25, height: 25)
 
                         // Source button
@@ -87,8 +97,9 @@ struct BigPostView: View {
                         .font(Font.bold(Font.body)())
                     }
                 }
+
             }
-            .frame(width: .infinity, height: 350)
+            .frame(width: .infinity, height: .infinity)
         }
         // End of ZStack.
     }
@@ -96,6 +107,6 @@ struct BigPostView: View {
 
 struct BigPostView_Previews: PreviewProvider {
     static var previews: some View {
-        BigPostView(post: .constant(Post(bigItem: true, socialNetwork: .instagram, text: "Oh, Mary! This last night was awesome, we had such a good vide together! I almost miss you and can't wait the moment of our next meeting!", likesCount: 3, commentsCount: 0, comments: [nil], image: Image("TestPicture"))))
+        PostView(post: .constant(Post(text: "Oh, Mary! This last night was awesome, we had such a good vide together! I almost miss you and can't wait the moment of our next meeting! Oh, Mary! This last night was awesome, we had such a good vide together! I almost miss you and can't wait the moment of our next meeting! Oh, Mary! This last night was awesome, we had such a good vide together! I almost miss you and can't wait the moment of our next meeting! Oh, Mary! This last night was awesome, we had such a good vide together! I almost miss you and can't wait the moment of our next meeting! Oh, Mary! This last night was awesome, we had such a good vide together! I almost miss you and can't wait the moment of our next meeting! Oh, Mary! This last night was awesome, we had such a good vide together! I almost miss you and can't wait the moment of our next meeting! Oh, Mary! This last night was awesome, we had such a good vide together! I almost miss you and can't wait the moment of our next meeting!", likesCount: 3, commentsCount: 0, comments: [nil], imageURL: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Google_Chrome_icon_%28February_2022%29.svg/1200px-Google_Chrome_icon_%28February_2022%29.svg.png", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Google_Chrome_icon_%28February_2022%29.svg/1200px-Google_Chrome_icon_%28February_2022%29.svg.png")))
     }
 }

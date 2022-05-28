@@ -11,7 +11,7 @@ struct LogInView: View {
     
     @State private var email = ""
     @State private var password = ""
-    @EnvironmentObject var viewModel: AuthViewModel
+    @EnvironmentObject var viewModel: AuthFirebase
     
     var body: some View {
         NavigationView {
@@ -21,7 +21,7 @@ struct LogInView: View {
                         Text("Hello.")
                             .font(.largeTitle)
                             .fontWeight(.semibold)
-                        Text("Welcome back.")
+                        Text("Ready to control?")
                             .font(.largeTitle)
                             .fontWeight(.semibold)
                 }
@@ -68,7 +68,6 @@ struct LogInView: View {
                 }
                 .shadow(color: .gray, radius: 10, x: 0, y: 0)
                 
-                
                 Spacer()
                 
                 HStack {
@@ -81,6 +80,10 @@ struct LogInView: View {
                             .fontWeight(.bold)
                             .foregroundColor(.blue)
                     }
+                    
+                    Image("GlassFull")
+                        .resizable()
+                        .frame(width: 25, height: 25)
                     
                 }
                 .padding(.bottom, 30)

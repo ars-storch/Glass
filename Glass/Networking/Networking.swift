@@ -5,4 +5,11 @@
 //  Created by Арсений Сторчевой on 12.05.2022.
 //
 
-import Foundation
+import SwiftUI
+
+class NetworkManager {
+    
+    var posts: [Post]?
+    
+    
+}

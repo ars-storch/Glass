@@ -10,10 +10,12 @@ import CoreData
 
 struct ContentView: View {
     
-    @EnvironmentObject var viewModel: AuthViewModel
+    @EnvironmentObject var viewModel: AuthFirebase
     @ObservedObject var feed = Feed()
     @State var likesAreAvailable = false
     @State var commentsAreVisible = false
+    var commitTest = true
+    var commitTest2 = true
     
     var body: some View {
         Group {
@@ -24,13 +26,12 @@ struct ContentView: View {
             }
         }
     }
-    
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
             ContentView()
-                .environmentObject(AuthViewModel())
+                .environmentObject(AuthFirebase())
     }
 }
 

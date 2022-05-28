@@ -7,49 +7,25 @@
 
 import SwiftUI
 
-// In Codable we can't save our own sctructures and Images
-
-struct Post: Identifiable {
+struct Post: Identifiable, Codable {
     
-    var bigItem: Bool = false
-    var socialNetwork: SocialNetwork
     var text = ""
     var likesCount: Int
     var commentsCount: Int
     var comments: [String?]
-    var logo: Image?
-    var image: Image?
-    let id = UUID()
+    var logo: String?
+    var imageURL: String
+    var id = UUID()
 
-    struct SomeImage: Codable {
-
-        public let photo: Data
+    init(text: String, likesCount: Int, commentsCount: Int, comments: [String?], imageURL: String, logo: String) {
         
-        public init(photo: UIImage) {
-            self.photo = photo.pngData()!
-        }
-    }
-    
-    enum SocialNetwork: Int, Codable {
-        case twitter, instagram
-    }
-    
-    init(bigItem: Bool, socialNetwork: SocialNetwork, text: String, likesCount: Int, commentsCount: Int, comments: [String?], image: Image) {
-        
-        self.bigItem = bigItem
         self.text = text
         self.likesCount = likesCount
         self.commentsCount = commentsCount
         self.comments = comments
-        self.socialNetwork = socialNetwork
-        self.image = image
+        self.imageURL = imageURL
+        self.logo = logo
         
-        switch(socialNetwork) {
-        case .twitter:
-            self.logo = Image("Twitter")
-        case .instagram:
-            self.logo = Image("Instagram")
-        }
     }
     
 }

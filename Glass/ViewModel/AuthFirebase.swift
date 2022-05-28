@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 import Firebase
 
-class AuthViewModel: ObservableObject {
+class AuthFirebase: ObservableObject {
     
     @Published var userSession: User?
     
