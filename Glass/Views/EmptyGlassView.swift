@@ -42,7 +42,7 @@ struct EmptyGlassView: View {
                         .padding(.leading, 22)
                     Spacer()
                 }
-                List {
+                List { // AsyncImage
                     ForEach($feed.posts) { post in
                         PostView(post: post)
                     }
