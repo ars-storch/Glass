@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 import SwiftyVK
 
 struct LogInView: View {
@@ -122,12 +123,35 @@ struct LogInView_Previews: PreviewProvider {
 //}
 
 struct VKLogInViewController: UIViewControllerRepresentable {
+    
     func makeUIViewController(context: Context) -> some UIViewController {
-        let vc = VKViewController()
+        let vc = VKAuthViewController()
         return vc
     }
     
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
         return
     }
+}
+
+class VKAuthViewController: UIViewController, SwiftyVKDelegate {
+    
+    override func viewDidLoad() {
+        VK.setUp(appId: APIWorker.apiKey, delegate: self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        APIWorker.authorize()
+    }
+    
+    func vkNeedsScopes(for sessionId: String) -> Scopes {
+        return Scopes([.wall, .friends])
+    }
+    
+    func vkNeedToPresent(viewController: VKViewController) {
+        if let topVC = UIApplication.getTopViewController() { topVC.present(viewController, animated: true) }
+      // Called when SwiftyVK wants to present UI (e.g. webView or captcha)
+      // Should display given view controller from current top view controller
+    }
+
 }

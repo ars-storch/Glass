@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import SwiftyVK
 
 @main
 struct GlassApp: App {

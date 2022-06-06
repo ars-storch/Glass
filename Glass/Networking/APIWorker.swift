@@ -10,6 +10,8 @@ import SwiftyVK
 
 final class APIWorker {
     
+    static let apiKey = "7844675"
+    
     class func authorize() {
         VK.sessions.default.logIn(
             onSuccess: { info in
