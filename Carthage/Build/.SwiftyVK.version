@@ -1,0 +1,19 @@
+{
+  "commitish" : "3.4.2",
+  "iOS" : [
+    {
+      "swiftToolchainVersion" : "5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)",
+      "hash" : "df0ebe71a65793859a2b17bb0bb2ed2219ceabd00e669c93e1ce596f5d596010",
+      "name" : "SwiftyVK",
+      "container" : "SwiftyVK.xcframework",
+      "identifier" : "ios-arm64_i386_x86_64-simulator"
+    },
+    {
+      "swiftToolchainVersion" : "5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)",
+      "hash" : "5ba9559fff0b4ca2eefc0ece2971fa47e7d849b742e8290519a662cd386de35d",
+      "name" : "SwiftyVK",
+      "container" : "SwiftyVK.xcframework",
+      "identifier" : "ios-arm64_armv7"
+    }
+  ]
+}

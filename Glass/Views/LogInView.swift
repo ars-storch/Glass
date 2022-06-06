@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import SwiftyVK
 
 struct LogInView: View {
     
+    @State private var showingSheet = false
     @State private var email = ""
     @State private var password = ""
     @EnvironmentObject var viewModel: AuthFirebase
@@ -43,22 +45,23 @@ struct LogInView: View {
                     
                     Spacer()
                     
-                    NavigationLink {
-                        ContentView()
+                    Button {
+                        showingSheet.toggle()
                     } label: {
-                        Text("Forgot Password?")
+                        Text("VK Log in")
                             .font(.caption)
                             .fontWeight(.semibold)
                             .foregroundColor(.blue)
                             .padding(.top)
                             .padding(.trailing, 24)
                     }
+                    .sheet(isPresented: $showingSheet) {VKLogInViewController()}
                 }
                 
                 Button {
                     viewModel.logIn(withemail: email, password: password)
                 } label: {
-                    Text("Signed in")
+                    Text("Sign in")
                         .font(.headline)
                         .foregroundColor(.white)
                         .frame(width: 340, height: 50)
@@ -67,6 +70,8 @@ struct LogInView: View {
                         .padding()
                 }
                 .shadow(color: .gray, radius: 10, x: 0, y: 0)
+                
+                
                 
                 Spacer()
                 
@@ -93,10 +98,36 @@ struct LogInView: View {
         }
 
     }
+        
 }
 
 struct LogInView_Previews: PreviewProvider {
     static var previews: some View {
         LogInView()
+    }
+}
+
+//struct VKLogInView: View {
+//    @Environment(\.dismiss) var dismiss
+//
+//    var body: some View {
+//        // View Controller Representative.
+//        Button("Press to dismiss") {
+//            dismiss()
+//        }
+//        .font(.title)
+//        .padding()
+//        .background(.black)
+//    }
+//}
+
+struct VKLogInViewController: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> some UIViewController {
+        let vc = VKViewController()
+        return vc
+    }
+    
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+        return
     }
 }

@@ -32,13 +32,13 @@ struct PostView: View {
             }
             ZStack{
                 VStack{
-                    AsyncImage(url: URL(string: post.imageURL)) { image in
-                        image.resizable()
-                    } placeholder: {
-                        Image(systemName: "HERE SHOULD BE LOADING IMAGE")
-                    }
-                        .frame(height: 150)
-                        .cornerRadius(30)
+//                    AsyncImage(url: URL(string: post.imageURL)) { image in
+//                        image.resizable()
+//                    } placeholder: {
+//                        Image(systemName: "HERE SHOULD BE LOADING IMAGE")
+//                    }
+//                        .frame(height: 150)
+//                        .cornerRadius(30)
                     ZStack{
                         RoundedRectangle(cornerRadius: 0)
                             .background(.white)
