@@ -108,20 +108,6 @@ struct LogInView_Previews: PreviewProvider {
     }
 }
 
-//struct VKLogInView: View {
-//    @Environment(\.dismiss) var dismiss
-//
-//    var body: some View {
-//        // View Controller Representative.
-//        Button("Press to dismiss") {
-//            dismiss()
-//        }
-//        .font(.title)
-//        .padding()
-//        .background(.black)
-//    }
-//}
-
 struct VKLogInViewController: UIViewControllerRepresentable {
     
     func makeUIViewController(context: Context) -> some UIViewController {
@@ -141,7 +127,7 @@ class VKAuthViewController: UIViewController, SwiftyVKDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        APIWorker.authorize()
+        APIWorker.statAuth()
     }
     
     func vkNeedsScopes(for sessionId: String) -> Scopes {
@@ -150,8 +136,6 @@ class VKAuthViewController: UIViewController, SwiftyVKDelegate {
     
     func vkNeedToPresent(viewController: VKViewController) {
         if let topVC = UIApplication.getTopViewController() { topVC.present(viewController, animated: true) }
-      // Called when SwiftyVK wants to present UI (e.g. webView or captcha)
-      // Should display given view controller from current top view controller
     }
 
 }

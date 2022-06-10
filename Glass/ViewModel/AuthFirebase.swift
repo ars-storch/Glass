@@ -46,7 +46,7 @@ class AuthFirebase: ObservableObject {
         
         print("DEBUG: Registered user sucsessfully")
         print("DEBUG: User is \(String(describing: self.userSession))")
-            
+        
         let data = ["email" : email,
                     "username" : username.lowercased(),
                     "fullname" : fullName, "uid" : user.uid]

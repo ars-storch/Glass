@@ -69,7 +69,6 @@
 		4C8507DE282A7A4500AA0606 /* EmptyGlassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyGlassView.swift; sourceTree = "<group>"; };
 		4C99BFC1283E51CB00A46B60 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		4C99BFC3283E792C00A46B60 /* CustomSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSecureField.swift; sourceTree = "<group>"; };
-		4CA10987284E25A500558457 /* Glass */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Glass; sourceTree = "<group>"; };
 		4CF940B9283D29DE009CAB61 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		4CF940BC283D2D26009CAB61 /* RoundedShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShape.swift; sourceTree = "<group>"; };
 		4CF940BE283D392B009CAB61 /* CustomInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputField.swift; sourceTree = "<group>"; };
@@ -110,7 +109,6 @@
 		4C59DB13282D47A700E3DDF6 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				4C59DB16282D4A7700E3DDF6 /* APIWorker.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -137,8 +135,8 @@
 			isa = PBXGroup;
 			children = (
 				4C8507B928296B7D00AA0606 /* GlassApp.swift */,
+				4C392D66284E124E005732BF /* Info.plist */,
 				4C392D6A284E15C1005732BF /* GoogleService-Info.plist */,
-				4CA10987284E25A500558457 /* Glass */,
 				4CF940BB283D2D02009CAB61 /* Components */,
 				4CF940B8283D2961009CAB61 /* Extensions */,
 				4CF940B7283D2945009CAB61 /* Views */,
@@ -173,14 +171,13 @@
 			isa = PBXGroup;
 			children = (
 				4C8507BB28296B7D00AA0606 /* ContentView.swift */,
-				4CF940B9283D29DE009CAB61 /* LogInView.swift */,
-				4C392D66284E124E005732BF /* Info.plist */,
-				4C99BFC1283E51CB00A46B60 /* RegistrationView.swift */,
-				4CF940BE283D392B009CAB61 /* CustomInputField.swift */,
-				4C99BFC3283E792C00A46B60 /* CustomSecureField.swift */,
 				4C8507CC28296C1900AA0606 /* FullGlassView.swift */,
 				4C8507DC282A79B900AA0606 /* NeutralGlassView.swift */,
 				4C8507DE282A7A4500AA0606 /* EmptyGlassView.swift */,
+				4CF940B9283D29DE009CAB61 /* LogInView.swift */,
+				4C99BFC1283E51CB00A46B60 /* RegistrationView.swift */,
+				4CF940BE283D392B009CAB61 /* CustomInputField.swift */,
+				4C99BFC3283E792C00A46B60 /* CustomSecureField.swift */,
 				4C8507D02829733300AA0606 /* PostView.swift */,
 				4C1351D62840B7F600DA9A50 /* ExpandableText.swift */,
 			);
@@ -208,6 +205,7 @@
 			children = (
 				4C8507D42829774D00AA0606 /* Feed.swift */,
 				4C392D62284E0235005732BF /* VKDelegate.swift */,
+				4C59DB16282D4A7700E3DDF6 /* APIWorker.swift */,
 				4CF940CC283D456C009CAB61 /* AuthFirebase.swift */,
 			);
 			path = ViewModel;

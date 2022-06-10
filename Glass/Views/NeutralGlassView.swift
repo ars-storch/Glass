@@ -9,8 +9,8 @@ import SwiftUI
 
 struct NeutralGlassView: View {
     
-    @ObservedObject var feed = Feed() // Это только в контент вью.
     @EnvironmentObject var viewModel: AuthFirebase
+    @Binding var posts: [Post]
     @Binding var likesAreAvailable: Bool
     @Binding var commentsAreVisible: Bool
     
@@ -43,18 +43,12 @@ struct NeutralGlassView: View {
                     Spacer()
                 }
                 List {
-                    ForEach($feed.posts) { post in
+                    ForEach($posts) { post in
                         PostView(post: post)
                     }
                     .padding(.top, 20)
                     .frame(width: 320, height: 365)
                 }.listStyle(.automatic)
             }
-    }
-}
-
-struct NeutralGlassView_Previews: PreviewProvider {
-    static var previews: some View {
-        NeutralGlassView(likesAreAvailable: .constant(false), commentsAreVisible: .constant(false))
     }
 }

@@ -9,13 +9,11 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    
+    @State var apiModel = APIWorker()
     @EnvironmentObject var viewModel: AuthFirebase
     @ObservedObject var feed = Feed()
     @State var likesAreAvailable = false
     @State var commentsAreVisible = false
-    var commitTest = true
-    var commitTest2 = true
     
     var body: some View {
         Group {
@@ -36,20 +34,21 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 extension ContentView {
+
     var mainInterfaceView: some View {
         TabView{
-            FullGlassView(likesAreAvailable: $likesAreAvailable, commentsAreVisible: $commentsAreVisible)
+            FullGlassView(posts: $feed.posts, likesAreAvailable: $likesAreAvailable, commentsAreVisible: $commentsAreVisible)
                 .tabItem() {
                     Image("GlassFullNav")
                 }
-            NeutralGlassView(likesAreAvailable: $likesAreAvailable, commentsAreVisible: $commentsAreVisible)
+            NeutralGlassView(posts: $feed.posts, likesAreAvailable: $likesAreAvailable, commentsAreVisible: $commentsAreVisible)
                 .tabItem() {
                     Image("GlassNeutralNav")
                 }
-            EmptyGlassView(likesAreAvailable: $likesAreAvailable, commentsAreVisible: $commentsAreVisible)
+            EmptyGlassView(posts: $feed.posts, likesAreAvailable: $likesAreAvailable, commentsAreVisible: $commentsAreVisible)
                 .tabItem() {
                     Image("GlassEmptyNav")
                 }
-            }
+        }
     }
 }

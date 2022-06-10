@@ -13,6 +13,7 @@ import SwiftyVK
 struct GlassApp: App {
     
     @StateObject var viewModel = AuthFirebase()
+    @StateObject var delegate = VKDelegate()
     
     init() {
         FirebaseApp.configure()
@@ -23,6 +24,7 @@ struct GlassApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(viewModel)
+                .environmentObject(delegate)
         }
         
     }

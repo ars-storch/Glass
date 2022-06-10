@@ -8,12 +8,14 @@
 import UIKit
 import SwiftyVK
 
-class VKDelegate: SwiftyVKDelegate {
-    
-    let scopes: Scopes = [.friends, .wall]
+class VKDelegate: ObservableObject, SwiftyVKDelegate {
+
+    init() {
+        VK.setUp(appId: "7844675", delegate: self)
+    }
 
     func vkNeedsScopes(for sessionId: String) -> Scopes {
-        return scopes
+        return Scopes([.friends, .wall, .offline, .photos])
     }
 
     func vkNeedToPresent(viewController: VKViewController) {

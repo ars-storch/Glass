@@ -10,7 +10,7 @@ import SwiftUI
 struct FullGlassView: View {
     
     @EnvironmentObject var viewModel: AuthFirebase
-    @ObservedObject var feed = Feed()
+    @Binding var posts: [Post]
     @Binding var likesAreAvailable: Bool
     @Binding var commentsAreVisible: Bool
     var likesCount: Int?
@@ -23,6 +23,7 @@ struct FullGlassView: View {
                             .padding(.leading, 10)
                         Image("GlassTitle")
                         Spacer()
+                        
                         Button(action: {viewModel.signOut()}) {
                             Image(systemName: "chevron.backward.circle.fill")
                                 .foregroundColor(.black)
@@ -42,7 +43,7 @@ struct FullGlassView: View {
                         Spacer()
                     }
                     List {
-                        ForEach($feed.posts) { post in
+                        ForEach($posts) { post in
                             PostView(post: post)
                         }
                             .padding(.top, 20)
@@ -50,15 +51,4 @@ struct FullGlassView: View {
                     }.listStyle(.automatic)
                 }
             }
-            
 }
-
-
-struct FeedView_Previews: PreviewProvider {
-    static var previews: some View {
-        FullGlassView(likesAreAvailable: .constant(false), commentsAreVisible: .constant(false))
-    }
-}
-
-
-

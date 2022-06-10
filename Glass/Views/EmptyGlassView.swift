@@ -9,12 +9,10 @@ import SwiftUI
 
 struct EmptyGlassView: View {
     
-    @ObservedObject var feed = Feed() // Это только в контент вью.
     @EnvironmentObject var viewModel: AuthFirebase
+    @Binding var posts: [Post]
     @Binding var likesAreAvailable: Bool
     @Binding var commentsAreVisible: Bool
-    
-    var likesCount: Int?
     
     var body: some View {
 
@@ -43,7 +41,7 @@ struct EmptyGlassView: View {
                     Spacer()
                 }
                 List { // AsyncImage
-                    ForEach($feed.posts) { post in
+                    ForEach($posts) { post in
                         PostView(post: post)
                     }
                     .padding(.top, 20)
@@ -52,10 +50,3 @@ struct EmptyGlassView: View {
             }
     }
 }
-
-struct EmptyGlassView_Previews: PreviewProvider {
-    static var previews: some View {
-        EmptyGlassView(likesAreAvailable: .constant(false), commentsAreVisible: .constant(false))
-    }
-}
-

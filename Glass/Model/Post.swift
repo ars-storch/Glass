@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// ПЕРЕПИСАТЬ
+
 struct Post: Identifiable, Codable {
         
     var text = ""
@@ -29,7 +31,6 @@ struct Post: Identifiable, Codable {
         self.imageURL = imageURL
         self.avatarURL = avatarURL
     }
-    
 
 }
 
